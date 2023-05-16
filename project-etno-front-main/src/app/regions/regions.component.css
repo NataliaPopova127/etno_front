@@ -1,0 +1,14 @@
+.region-name-card {
+    background: #5a7; 
+}
+.region-description-card {
+    background: #5a7; 
+}
+.carousel-image-mask {
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 100%); 
+}
+.carousel-image-container {
+    background: #000 !important;
+}
+
+

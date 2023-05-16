@@ -1,0 +1,69 @@
+<div class="m-0 row container-fluid">
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <div class="card">
+            <div class="card-img-top h-100">
+                <div class="d-flex justify-content-center pt-4 pb-3 px-2  region-name-card">
+                    <h1 class="region-title">{{ regionInfo.reg }}</h1>
+                </div>
+                <div class="ratio ratio-16x9">
+                    <video class="card-img-bottom" autoplay loop muted controls src="/assets/agygea_preview.mp4"></video>
+                </div>
+                <!--
+                    <ngb-carousel #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+                    (slide)="onSlide($event)" class="card transparent align-items-center justify-content-center"
+                    style="height: 32rem;">
+                    <ng-template ngbSlide *ngFor="let img of images; index as i">
+                        <div class="d-flex justify-content-center align-items-center h-100" *ngIf="!isCarouselLoaded">
+                            <div class="spinner-grow text-grey" role="status"></div>
+                        </div>
+        
+                        <div class="carousel-caption">
+                            <h3>My slide {{i + 1}} title</h3>
+                        </div>
+        
+                        <a href="https://www.google.com/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer"
+                            [hidden]="!isCarouselLoaded">
+                            <div class="d-flex justify-content-center carousel-image-container">
+                                <img (load)="onImageLoad()" class="d-block w-100 carousel-image-mask" [src]="img"
+                                    alt="My image {{i + 1}} description" />
+                            </div>
+                        </a>
+                    </ng-template>
+                </ngb-carousel>
+                -->
+                
+            </div>
+        
+            <!--
+<div class="card-body text-card">
+                Добро пожаловать на наш уникальный проект!<br>
+                Он поможет погрузиться в культуру регионов РФ и откроет множество
+                возможностей для развлечений и отдыха!<br>
+                <br>
+                Этно - это отличный выбор для всех, кто ищет необычные,
+                интересные и культурно насыщенные путешествия. <br>
+                Каждый регион и каждый этнос имеют свой неповторимый образ жизни и наследие,
+                поэтому мы создали уникальный сервис подбора развлечений и мест, где можно познакомиться
+                с традициями, отведать национальные блюда, научиться рукоделию и другим ремёслам. <br>
+                Мы хотим сделать ваше путешествие по-настоящему увлекательным, полезным и запоминающимся!
+            </div>
+            -->
+        </div>
+    </div>
+    
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title">Карта событий региона</h1>
+        <div class="card map-card mt-3 align-items-center justify-content-center" style="overflow: hidden;">
+            <app-yandex-maps [regionName]="regionInfo.searchName" [tourId]="'1'" class="card-img-bottom map-placeholder"></app-yandex-maps>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title">История региона</h1>
+        <div class="card text-card mt-3 flex-fill">
+            <p>{{response?.userId}}</p>
+            <p>{{response?.title}}</p>
+            
+        </div>
+    </div>
+</div>

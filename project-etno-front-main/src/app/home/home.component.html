@@ -1,0 +1,38 @@
+<div class="m-0 row container-fluid">
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title">Сейчас в Вашем регионе</h1>
+        <div class="card map-card mt-3 align-items-center justify-content-center">
+            <app-yandex-maps [tourId]="'1'" class="card-img-bottom map-placeholder"></app-yandex-maps>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title">Описание проекта</h1>
+        <div class="card text-card mt-3 flex-fill">
+            Добро пожаловать на наш уникальный проект!<br>
+            Он поможет погрузиться в культуру регионов РФ и откроет множество
+            возможностей для развлечений и отдыха!<br>
+            <br>
+            ПроЭтно - это отличный выбор для всех, кто ищет необычные,
+            интересные и культурно насыщенные путешествия. <br>
+            Каждый регион и каждый этнос имеют свой неповторимый образ жизни и наследие,
+            поэтому мы создали уникальный сервис подбора развлечений и мест, где можно познакомиться
+            с традициями, отведать национальные блюда, научиться рукоделию и другим ремёслам. <br>
+            Мы хотим сделать ваше путешествие по-настоящему увлекательным, полезным и запоминающимся!
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h1 class="card-title mb-3">Моя Россия</h1>
+        <div class="card-gallery rounded-corners">
+            <div class="d-flex cards-container">
+                <div *ngFor="let item of testRegionsRibbon"> 
+                    <a class="card small-card" [routerLink]="['/region', item]">
+                        <img class="card-img-top map-placeholder" [src]=item.previewPath>
+                        <div class="card-img-overlay card-text-overlay text-bottom">{{ item.reg }}</div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<header class="mb-3">
+  <nav class="navbar navbar-expand-lg navbar-dark" id="navigation-menu">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/Asset 283@0.5x.png" height="60" class="d-inline-block align-top">
+        ПроЭтно
+      </a>
+
+      <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">&#9776;</button>
+
+      <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="home" routerLinkActive="active">Главная</a>
+          </li>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" href="tour" routerLink="tour" routerLinkActive="active">Страница тура</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="region" routerLink="region" routerLinkActive="active">Страница региона</a>
+          </li>
+          -->
+          <li class="nav-item">
+            <a class="nav-link" href="regions" routerLink="regions" routerLinkActive="active">Страница регионов</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main style="min-height: 75.55vh;">
+  <router-outlet></router-outlet>
+</main>
+
+<app-footer></app-footer>

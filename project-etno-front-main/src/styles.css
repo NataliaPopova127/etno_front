@@ -1,0 +1,176 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Lato', sans-serif;
+}
+:root {
+    --color-dark: #43423D;
+    --main-bg: #5A6962;
+    --hats-bg: #55856f;
+    --color-mid: #B8995E;
+    --color-light: #DEC78D;
+    --color-warm-white: #EAE1AF;
+    --color-warm-white-bg: #F5F0D7;
+    --black: #000;
+    --white: #fff;
+}
+
+body {
+    background-color: var(--white);
+    text-shadow: 0rem 0rem 0.3rem rgba(0, 0, 0, 0.15);
+}
+
+nav {
+    background-color: var(--hats-bg);
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+    border-radius: 0rem 0rem 0.625rem 0.625rem;
+}
+
+footer {
+    background-color: var(--hats-bg);
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+}
+
+a.navbar-brand {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+ul {
+    margin-top: 0.3rem;
+}
+
+li {
+    display: inline-block;
+    margin-right: 1.25rem;
+    font-weight: 400;
+}
+
+li.active {
+    font-weight: 800;
+}
+
+a.nav-link {
+    font-size: 14pt;
+    color: var(--color-warm-white);
+}
+
+h1.card-title {
+    font-weight: 800;
+    font-size: 24pt;
+    color: var(--color-dark);
+}
+h1.region-title {
+    word-wrap: break-word;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-self: center;
+    font-weight: 800;
+    font-size:32pt;
+    color: var(--color-warm-white-bg);
+    border-radius: 0.625rem 10rem 0rem 0rem;
+}
+
+.card {
+    border-radius: 0.625rem;
+    font-size: 15pt;
+    overflow: auto;
+    overflow-x: hidden;
+    border-color: var(--color-warm-white-bg);
+    background-color: #f9f9f9;
+}
+
+.card.transparent {
+    border-radius: 0rem;
+    border-width: 0rem;
+    background-color: #0000;
+
+}
+
+.text-card {
+    padding: 1.875rem;
+}
+
+.card-text-overlay {
+    font-size: 18pt;
+    font-weight: 800;
+    color: var(--color-dark);
+
+    text-shadow: 0rem 0rem 0.625rem rgba(0, 0, 0, 0.25);
+}
+
+.small-card {
+    width: 15rem;
+    height: auto;
+}
+
+.location-small-italic {
+    margin: 0.3rem 0rem;
+    font-size: 12pt;
+    font-style: italic;
+    word-wrap: normal;
+}
+
+.cards-container {
+    display: inline-block;
+    gap: 1.25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.card-gallery {
+    margin: 0rem;
+    display: grid;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    /*-ms-overflow-style: none; Internet Explorer 10+ */
+    /*scrollbar-width: none;   Firefox */
+}
+
+.card-gallery::-webkit-scrollbar {
+    /*  display: none;  Safari and Chrome */
+}
+
+.text-cream {
+    color: var(--color-warm-white);
+}
+
+.text-cream-light {
+    color: var(--color-warm-white-bg);
+}
+
+.rounded-corners {
+    position: relative;
+    left: -24px;
+    width: calc(100% + 48px);
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.carousel-inner img {
+
+    height: 32rem;
+    width: 100%;
+    object-fit: cover !important;
+    display: block;
+
+}
+
+.carousel-item {
+    height: 32rem;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+}
+.wrapped {
+    white-space: pre-wrap;
+}
