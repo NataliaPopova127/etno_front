@@ -13,6 +13,10 @@ import { AngularYandexMapsModule, YaConfig } from 'angular8-yandex-maps';
 import { FooterComponent } from './footer/footer.component';
 
 import { HttpClientModule }   from '@angular/common/http';
+import { AuthorizationComponent } from './authorization/authorization.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 const mapConfig:  YaConfig = {
   apikey: '6db495ad-3e21-4030-a956-74245743feac',
   lang: 'ru_RU'
@@ -26,14 +30,17 @@ const mapConfig:  YaConfig = {
     TourComponent,
     RegionsComponent,
     RegionComponent,
-    FooterComponent
+    FooterComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     AngularYandexMapsModule.forRoot(mapConfig),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

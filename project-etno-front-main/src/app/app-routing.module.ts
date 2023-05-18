@@ -4,13 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { TourComponent } from './tour/tour.component';
 import { RegionsComponent } from './regions/regions.component';
 import { RegionComponent } from './region/region.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'tour', component: TourComponent },
   { path: 'region', component: RegionComponent },
   { path: 'regions', component: RegionsComponent },
-  
+  { path: 'authorization', component: AuthorizationComponent},
+  { path: 'registration', component: RegistrationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

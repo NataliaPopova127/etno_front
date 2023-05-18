@@ -1,0 +1,37 @@
+/* .input-login-password{
+    width: 210px;
+    display: flex;
+    justify-content: center;
+}
+.input-login-password input{
+    width: 200px;
+    display: block;
+    float: left;
+}
+.p-login-password{
+    width: 150px;
+    display: block;
+    float: left;
+} */
+button{
+    width: 150px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: var(--hats-bg);
+    color: var(--white);
+}
+button:hover{
+    background-color: var(--main-bg);
+}
+.container-auth{
+    width: 500px;
+    display: block;
+    margin:auto
+}
+.container-auth a{
+    color: var(--main-bg);
+    cursor: pointer;
+}
+.container-auth a:hover{
+    color: var(--hats-bg);
+}

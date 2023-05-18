@@ -1,0 +1,19 @@
+<div class="container-fluid h-100">
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title mb-3">Авторизация</h1>
+        <div class="card text-card mt-3 flex-fill">
+            <div class="container-auth">
+                <div>
+                    <p>Логин: </p>
+                    <input type="text" [(ngModel)]="login"/>
+                </div>
+                <div>
+                    <p>Пароль: </p>
+                    <input type="password" [(ngModel)]="password"/>
+                </div>
+                <button class="form-control" (click)="authorization()">Войти</button>
+                <p>Нет учетной записи? <a href="registration" routerLink="../registration" routerLinkActive="active">Зарегистрируйтесь</a></p>
+            </div>
+        </div>
+    </div>
+</div>
