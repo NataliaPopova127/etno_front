@@ -1,26 +1,30 @@
 <div class="container-fluid h-100">
-    <div class="mb-3 px-0 mx-2 h-100">
-        <h1 class="card-title mb-3">Регионы</h1>
-        <div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Поиск" aria-label="Название региона" aria-describedby="basic-addon2"
-                (input)="onSearchChange($event)">
-            </div>
-        </div>
-        <h5 *ngIf="testRegions.length <= 0" class="text-center">
-            Мы ничего не нашли по вашему запросу
-        </h5>
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 h-100">
-
-            <div class="col" *ngFor="let item of testRegions"> 
-                <a class="card btn text-start p-0" [routerLink]="['/region', item]">
-            
-                    <img class="card-img-top" [src]=item.previewPath>
-                    <div class="card-img-overlay card-text-overlay text-bottom">{{ item.reg }}</div>
-                </a>
-                
-            </div>
-        </div>
+  <div class="mb-3 px-0 mx-2 h-100">
+    <h1 class="card-title mb-3">Регионы</h1>
+    <div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Поиск"
+          aria-label="Название региона"
+          aria-describedby="basic-addon2"
+          (input)="onSearchChange($event)"
+        />
+      </div>
     </div>
+    <h5 *ngIf="response.length <= 0" class="text-center">
+      Мы ничего не нашли по вашему запросу
+    </h5>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 h-100">
+      <div class="col" *ngFor="let item of response">
+        <a class="card btn text-start p-0" [routerLink]="['/region', item]">
+          <img class="card-img-top" [src]="item.iconImage" />
+          <div class="card-img-overlay card-text-overlay text-bottom">
+            {{ item.subjectName }}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-

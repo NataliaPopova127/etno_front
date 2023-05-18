@@ -1,14 +1,23 @@
 <div class="m-0 row container-fluid">
-    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
-        <div class="card">
-            <div class="card-img-top h-100">
-                <div class="d-flex justify-content-center pt-4 pb-3 px-2  region-name-card">
-                    <h1 class="region-title">{{ regionInfo.reg }}</h1>
-                </div>
-                <div class="ratio ratio-16x9">
-                    <video class="card-img-bottom" autoplay loop muted controls src="/assets/agygea_preview.mp4"></video>
-                </div>
-                <!--
+  <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+    <div class="card">
+      <div class="card-img-top h-100">
+        <div
+          class="d-flex justify-content-center pt-4 pb-3 px-2 region-name-card"
+        >
+          <h1 class="region-title">{{ response?.subjectName }}</h1>
+        </div>
+        <div class="ratio ratio-16x9">
+          <video
+            class="card-img-bottom"
+            autoplay
+            loop
+            muted
+            controls
+            src="{{ response?.urlVideo }}"
+          ></video>
+        </div>
+        <!--
                     <ngb-carousel #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
                     (slide)="onSlide($event)" class="card transparent align-items-center justify-content-center"
                     style="height: 32rem;">
@@ -31,10 +40,9 @@
                     </ng-template>
                 </ngb-carousel>
                 -->
-                
-            </div>
-        
-            <!--
+      </div>
+
+      <!--
 <div class="card-body text-card">
                 Добро пожаловать на наш уникальный проект!<br>
                 Он поможет погрузиться в культуру регионов РФ и откроет множество
@@ -48,22 +56,27 @@
                 Мы хотим сделать ваше путешествие по-настоящему увлекательным, полезным и запоминающимся!
             </div>
             -->
-        </div>
     </div>
-    
-    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
-        <h1 class="card-title">Карта событий региона</h1>
-        <div class="card map-card mt-3 align-items-center justify-content-center" style="overflow: hidden;">
-            <app-yandex-maps [regionName]="regionInfo.searchName" [tourId]="'1'" class="card-img-bottom map-placeholder"></app-yandex-maps>
-        </div>
-    </div>
+  </div>
 
-    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
-        <h1 class="card-title">История региона</h1>
-        <div class="card text-card mt-3 flex-fill">
-            <p>{{response?.userId}}</p>
-            <p>{{response?.title}}</p>
-            
-        </div>
+  <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+    <h1 class="card-title">Карта событий региона</h1>
+    <div
+      class="card map-card mt-3 align-items-center justify-content-center"
+      style="overflow: hidden"
+    >
+      <app-yandex-maps
+        [regionName]="regionInfo.searchName"
+        [tourId]="'1'"
+        class="card-img-bottom map-placeholder"
+      ></app-yandex-maps>
     </div>
+  </div>
+
+  <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+    <h1 class="card-title">История региона</h1>
+    <div class="card text-card mt-3 flex-fill">
+      <p>{{ response?.description }}</p>
+    </div>
+  </div>
 </div>
