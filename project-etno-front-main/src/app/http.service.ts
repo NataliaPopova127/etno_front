@@ -9,4 +9,7 @@ export class HttpService{
     getData(path:string){
         return this.http.get(path)
     }
+    addData(path: string, body: any){
+        return this.http.post(path, body);
+    }
 }

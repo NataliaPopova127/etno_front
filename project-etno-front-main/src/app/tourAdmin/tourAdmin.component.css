@@ -1,0 +1,23 @@
+.main-container{
+    width: 80%;
+    display: block;
+    float: left;
+    height: auto;
+}
+.right-container{
+    margin-right: 0;
+    margin-left: auto;
+    height: 100%;
+    width: 20%;
+    display: block;
+}
+button{
+    width: 150px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: var(--hats-bg);
+    color: var(--white);
+}
+button:hover{
+    background-color: var(--main-bg);
+}

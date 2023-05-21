@@ -15,6 +15,7 @@ export class AuthorizationComponent {
     password: any | undefined;
 
     public authorization(){
-       alert(this.login + " " + this.password);
+       //переход на страг=ницу тур админа
+       document.location.href = "tourAdmin";
     }
 }

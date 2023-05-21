@@ -35,3 +35,7 @@ button:hover{
 .container-auth a:hover{
     color: var(--hats-bg);
 }
+p{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

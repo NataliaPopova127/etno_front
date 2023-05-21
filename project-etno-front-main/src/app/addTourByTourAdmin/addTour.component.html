@@ -1,0 +1,50 @@
+<div class="container-fluid h-100">
+    <div class="col-sm-12 col-lg-12 mb-3 d-flex flex-column">
+        <h1 class="card-title mb-3">Добавление тура</h1>
+        <div class="card text-card mt-3 flex-fill">
+            <div>
+                <div class="main-container">
+                    <div>
+                        <p>Название<span style="color:red">*</span>: </p>
+                        <input type="text" [(ngModel)]="name"/>
+                    </div>
+                    <div>
+                        <p>Описание<span style="color:red">*</span>: </p>
+                        <input type="text" [(ngModel)]="description"/>
+                    </div>
+                    <div>
+                        <p>Дата начала<span style="color:red">*</span>: </p>
+                        <input type="date" [(ngModel)]="dateStart"/>
+                    </div>
+                    <div>
+                        <p>Дата окончания<span style="color:red">*</span>: </p>
+                        <input type="date" [(ngModel)]="dateEnd"/>
+                    </div>
+                    <div>
+                        <p>Фото<span style="color:red">*</span>: </p>
+                        <input type="file" [(ngModel)]="photoPath" accept="image/*"/>
+                    </div>
+                    <div>
+                        <p>Видео: </p>
+                        <input type="file" [(ngModel)]="videoPath" accept="video/*"/>
+                    </div>
+                    <div>
+                        <p>Регион<span style="color:red">*</span>: </p>
+                        <select [(ngModel)]="region">
+                            <option *ngFor="let r of regions" [(ngModel)]="r.name" [value]="r.id">{{r.name}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Тип<span style="color:red">*</span>: </p>
+                        <select [(ngModel)]="type">
+                            <option *ngFor="let t of types" [(ngModel)]="t.value" [value]="t.id">{{t.value}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="right-container">
+                    <button class="form-control" (click)="tourList()">Список туров</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

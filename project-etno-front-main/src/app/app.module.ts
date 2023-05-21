@@ -14,8 +14,11 @@ import { FooterComponent } from './footer/footer.component';
 
 import { HttpClientModule }   from '@angular/common/http';
 import { AuthorizationComponent } from './authorization/authorization.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { TourAdminComponent } from './tourAdmin/tourAdmin.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddTourByTourAdminComponent } from './addTourByTourAdmin/addTour.component';
 
 const mapConfig:  YaConfig = {
   apikey: '6db495ad-3e21-4030-a956-74245743feac',
@@ -31,7 +34,10 @@ const mapConfig:  YaConfig = {
     RegionsComponent,
     RegionComponent,
     FooterComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    RegistrationComponent,
+    TourAdminComponent,
+    AddTourByTourAdminComponent
   ],
   imports: [
     BrowserModule,

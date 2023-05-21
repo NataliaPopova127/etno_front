@@ -5,7 +5,6 @@ import {
   NgbSlideEvent,
   NgbSlideEventSource,
 } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
 import { AngularYandexMapsModule } from 'angular8-yandex-maps';
 import { HttpService } from '../http.service';
 
@@ -16,7 +15,7 @@ import { HttpService } from '../http.service';
   providers: [HttpService],
 })
 export class RegionComponent {
-  regionInfo = { id: '', reg: '', searchName: '' };
+  regionInfo = { id: '' };
 
   isCarouselLoaded = false;
   images = [62, 83, 466, 965, 982, 1043, 738].map(
@@ -34,10 +33,6 @@ export class RegionComponent {
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) {
     this.regionInfo.id = this.route.snapshot.paramMap.get('id') as string;
-    this.regionInfo.reg = this.route.snapshot.paramMap.get('reg') as string;
-    this.regionInfo.searchName = this.route.snapshot.paramMap.get(
-      'searchName'
-    ) as string;
     //alert(this.regionInfo.id); Данные из пути заносятся в переменные в regionInfo, оттуда брать id и вставлять в путь к апи для поиска инфы по региону
   }
 

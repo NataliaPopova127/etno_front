@@ -18,7 +18,7 @@
     </h5>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 h-100">
       <div class="col" *ngFor="let item of response">
-        <a class="card btn text-start p-0" [routerLink]="['/region', item]">
+        <a class="card btn text-start p-0" [routerLink]="['/region', item.id]">
           <img class="card-img-top" [src]="item.iconImage" />
           <div class="card-img-overlay card-text-overlay text-bottom">
             {{ item.subjectName }}
