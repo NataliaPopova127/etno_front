@@ -36,7 +36,7 @@
                         <div>
                             <p>Пол:<span style="color:red">*</span> </p>
                             <select [(ngModel)]="gender">
-                                <option *ngFor="let g of genders" [(ngModel)]="g.name" [value]="g.id">{{g.name}}</option>
+                                <option *ngFor="let g of genders" [(ngModel)]="g.name" [value]="g.id">{{g.value}}</option>
                             </select>
                         </div>
                         <div>
@@ -51,6 +51,7 @@
                 </div>
             
                 <button class="form-control" (click)="registration()">Регистрация</button>
+
             </div>
         </div>
     </div>

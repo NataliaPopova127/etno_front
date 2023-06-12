@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { YaEvent, YaReadyEvent } from 'angular8-yandex-maps';
+import { HttpService } from '../http.service';
 
 interface GeoObjectConstructor {
   feature: ymaps.IGeoObjectFeature;
@@ -16,10 +17,10 @@ interface PlacemarkConstructor {
 @Component({
   selector: 'app-yandex-maps',
   templateUrl: './yandex-maps.component.html',
-  styleUrls: ['./yandex-maps.component.css']
+  styleUrls: ['./yandex-maps.component.css'],
+  providers: [HttpService],
 })
 export class YandexMapsComponent {
-
   placemarkproperies: ymaps.IPlacemarkProperties[] = [{
     balloonContentHeader: 'The placemark balloon',
     balloonContentBody: 'Content of the <em>placemark</em> balloon',
@@ -39,15 +40,23 @@ export class YandexMapsComponent {
   tourId: string = ""
 
   placemarks: PlacemarkConstructor[] = [];
+  tours: any;
+  tour: any;
+  ROOT_URL = ``;
+  TOUR_URL = ``;
 
   globalRouter: Router
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private httpService: HttpService) {
     this.globalRouter = router
   }
 
   ngOnInit() {
-
+    this.ROOT_URL = `http://localhost:8080/api/tours`;
+    
+    this.httpService
+      .getData(this.ROOT_URL)
+      .subscribe((tours) => (this.tours = tours));
   }
 
   onMapReady(event: YaReadyEvent<ymaps.Map>): void {
@@ -82,42 +91,39 @@ export class YandexMapsComponent {
               this.drawRegion(result)
             });
         });
+        
+        if (this.tourId != "") {
+          //get info about tour
+          for(let index = 0; index < this.tours.length; index++){
+            const element = this.tours[index];
+            this.placemarks.push({
+              geometry: [element.geometry.lat, element.geometry.lon],
+              properties:{
+                iconCaption: element.name,
+              },
+              options:{
+                preset: 'islands#redDotIconWithCaption',
+                data: element.id,
+              }
+            });
+          }
+          this.map.setZoom(16)
+          this.map.panTo([44.609662434952035, 40.13996062879765], { flying: true })
 
-    if (this.tourId != "") {
-      //get info about tour
-      this.placemarks = [
-        {
-          geometry: [44.609662, 40.139960],
-          properties: {
-            iconCaption: 'Мастерская золотного шитья',
-          },
-          options: {
-            preset: 'islands#redDotIconWithCaption',
-            data: this.tourId
-          },
-
-        },
-        {
-          geometry: [44.884856, 40.190567],
-          properties: {
-            iconCaption: 'Приготовление адыгейского сыра',
-          },
-          options: {
-            preset: 'islands#redDotIconWithCaption',
-            data: this.tourId
-          },
-
-        },
-      ]
-      this.map.setZoom(16)
-      this.map.panTo([44.609662434952035, 40.13996062879765], { flying: true })
-
-    }
+        }
   }
 
-onBaloonClick(event: YaEvent) {
-  this.globalRouter.navigate(['/tour'], event.target.options._options.data)
-}
+
+  onBaloonClick(event: YaEvent) {
+    
+    this.TOUR_URL = `http://localhost:8080/api/tour/${event.target.options._options.data}`;
+    this.httpService
+      .getData(this.TOUR_URL)
+      .subscribe((t) => (this.tour = t, this.globalRouter.navigate(['/tour', this.tour.id, this.tour.name])));
+
+    //this.globalRouter.navigate(['/tour'], event.target.options._options.data)
+    
+  }
 
   drawRegion(result: { geoObjects: ymaps.GeoObjectCollection }, customLocation: string = "") {
     if (this.showRegion) {

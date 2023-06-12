@@ -33,20 +33,31 @@ export class RegionComponent {
 
   constructor(private route: ActivatedRoute, private httpService: HttpService) {
     this.regionInfo.id = this.route.snapshot.paramMap.get('id') as string;
-    //alert(this.regionInfo.id); Данные из пути заносятся в переменные в regionInfo, оттуда брать id и вставлять в путь к апи для поиска инфы по региону
+    //alert(this.regionInfo.id); //Данные из пути заносятся в переменные в regionInfo, оттуда брать id и вставлять в путь к апи для поиска инфы по региону
   }
-
+ 
   response: any;
-  id = '0';
-
+  id = '';
   ROOT_URL = '';
+  emptyRegion = [
+    {
+      id: "",
+      subjectName: "",
+      iconImage: ""
+	  }
+  ];
 
   ngOnInit() {
     this.id = this.regionInfo.id;
-    this.ROOT_URL = `http://localhost:8080/region/${this.id}`;
+    this.ROOT_URL = `http://localhost:8080/api/region/${this.id}`;
+    
     this.httpService
       .getData(this.ROOT_URL)
       .subscribe((response) => (this.response = response));
+
+    if(this.response == undefined){
+      this.response = this.emptyRegion;
+    }
   }
 
   ngOnDestroy() {}

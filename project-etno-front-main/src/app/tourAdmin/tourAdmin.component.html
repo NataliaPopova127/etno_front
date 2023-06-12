@@ -4,10 +4,25 @@
         <div class="card text-card mt-3 flex-fill">
             <div class="container-auth">
                 <div class="main-container">
-                    Список туров как в списке регионов
-                </div>
-                <div class="right-container">
-                    <button class="form-control" (click)="addTour()">Добавить тур</button>
+                    <div class="top-container">
+                        <button class="form-control" (click)="addTour()">Добавить тур</button>
+                    </div>
+                    <div class="tour-container">
+                        <div class="tour-element" *ngFor="let item of tours">
+                            <a class="card btn text-start p-0" [routerLink]="['/tour', item]">
+                                <img class="tour-image" src="../../assets/no-image.png"/>
+                              
+                                <div class="tour-text">
+                                    <div class="tour-name card-text-overlay text-bottom">
+                                        {{ item.name }}
+                                    </div>
+                                    <div class="tour-description">
+                                        {{ item.description }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                     
                 </div>
             </div>

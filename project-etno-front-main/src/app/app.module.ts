@@ -12,13 +12,18 @@ import { RegionComponent } from './region/region.component';
 import { AngularYandexMapsModule, YaConfig } from 'angular8-yandex-maps';
 import { FooterComponent } from './footer/footer.component';
 
-import { HttpClientModule }   from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule }   from '@angular/common/http';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TourAdminComponent } from './tourAdmin/tourAdmin.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddTourByTourAdminComponent } from './addTourByTourAdmin/addTour.component';
+import { AddTourByTourAdminComponent } from './add-tour-by-tour-admin/add-tour-by-tour-admin.component';
+
+import { MaterialModule } from './material.module';
+import { ModalComponent } from './modal/modal.component';
+import { TokenInterceptor } from './tokenInterceptor';
+import { ClientPageComponent } from './client-page/client-page.component';
 
 const mapConfig:  YaConfig = {
   apikey: '6db495ad-3e21-4030-a956-74245743feac',
@@ -37,7 +42,9 @@ const mapConfig:  YaConfig = {
     AuthorizationComponent,
     RegistrationComponent,
     TourAdminComponent,
-    AddTourByTourAdminComponent
+    AddTourByTourAdminComponent,
+    ModalComponent,
+    ClientPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +54,12 @@ const mapConfig:  YaConfig = {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

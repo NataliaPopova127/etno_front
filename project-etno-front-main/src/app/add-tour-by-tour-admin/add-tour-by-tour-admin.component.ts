@@ -3,8 +3,8 @@ import { HttpService } from "../http.service";
 
 @Component({
     selector: 'app-addTour',
-    templateUrl: './addTour.component.html',
-    styleUrls: ['./addTour.component.css'],
+    templateUrl: './add-tour-by-tour-admin.component.html',
+    styleUrls: ['./add-tour-by-tour-admin.component.css'],
     providers: [HttpService]
 })
 export class AddTourByTourAdminComponent{ 

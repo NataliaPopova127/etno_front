@@ -25,11 +25,11 @@
     <div class="mb-3">
         <h1 class="card-title mb-3">Моя Россия</h1>
         <div class="card-gallery rounded-corners">
-            <div class="d-flex cards-container">
-                <div *ngFor="let item of testRegionsRibbon"> 
-                    <a class="card small-card" [routerLink]="['/region', item]">
-                        <img class="card-img-top map-placeholder" [src]=item.previewPath>
-                        <div class="card-img-overlay card-text-overlay text-bottom">{{ item.reg }}</div>
+            <div class="d-flex cards-container" >
+                <div *ngFor="let item of response"> 
+                    <a class="card small-card" [routerLink]="['/region', item.id, item.subjectName]">
+                        <img class="card-img-top map-placeholder" [src]=item.iconImage>
+                        <div class="card-img-overlay card-text-overlay text-bottom">{{ item.subjectName }}</div>
                 </a>
                 </div>
             </div>

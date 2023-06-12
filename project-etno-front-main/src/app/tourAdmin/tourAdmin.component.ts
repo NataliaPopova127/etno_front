@@ -12,26 +12,47 @@ import { toInteger } from "@ng-bootstrap/ng-bootstrap/util/util";
 export class TourAdminComponent{
     userInfo = { id: '' };
     constructor(private route: ActivatedRoute, private httpService: HttpService) {
-        this.userInfo.id = this.route.snapshot.paramMap.get('id') as string;
+        this.userInfo.id = this.route.snapshot.paramMap.get('idUser') as string;
         //alert(this.regionInfo.id); Данные из пути заносятся в переменные в regionInfo, оттуда брать id и вставлять в путь к апи для поиска инфы по региону
       }
     firstname: string | undefined;
-    user: any;
-    id = "";
+    account: any;
+    tours:any;
+    idUser = "";
     USER_URL = '';
+    TOUR_URL = '';
+
+    emptyTours=[
+        {
+            id: "",
+            name: "",
+            description: ""
+        }
+    ]
 
     ngOnInit() {
-        this.id = this.userInfo.id;
-        this.USER_URL = `http://localhost:8080/user/${this.id}`;
+        this.USER_URL = `http://localhost:8080/account/${this.userInfo.id}`;
         this.httpService
             .getData(this.USER_URL)
-            .subscribe((user) => (this.user = user));
-
-        if(this.user != null || this.user != undefined){
-            //загрузка списка туров админа
+            .subscribe(user => {
+                this.account = user;
+                if(this.account != null && this.account != undefined){
+                    this.firstname = this.account.user.firstName
+                }
+            });
+       // if(this.user != null || this.user != undefined){
+        //загрузка списка туров админа
+        this.TOUR_URL = `http://localhost:8080/api/tours`;
+        this.httpService
+            .getData(this.TOUR_URL)
+            .subscribe((tours) => (this.tours = tours));
+        
+        if(this.tours == undefined){
+            this.tours = this.emptyTours;
         }
+      //  }
     } 
     public addTour(){
-        document.location.href = "addTourByTourAdmin";
+        document.location.href = "add-tour-by-tour-admin";
     }  
 }

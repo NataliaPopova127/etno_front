@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddTourByTourAdminComponent } from './addTour.component';
+import { AddTourByTourAdminComponent } from './add-tour-by-tour-admin.component';
 
 describe('AddTourByTourAdminComponent', () => {
     let component: AddTourByTourAdminComponent;

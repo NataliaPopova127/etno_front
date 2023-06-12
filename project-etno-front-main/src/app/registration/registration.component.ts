@@ -1,5 +1,7 @@
 import { Component, NgModule } from "@angular/core";
 import { HttpService } from "../http.service";
+import { ErrorHandlerService } from '../shared/services/error-handler.service';
+
 
 @Component({
     selector: 'app-registration',
@@ -8,15 +10,8 @@ import { HttpService } from "../http.service";
     providers: [HttpService]
 })
 export class RegistrationComponent{
-    constructor(private httpService: HttpService){}
-    genders = [
-        {id: 1, name: "Женский"},
-        {id: 2, name: "Мужской"}
-    ];
-    // regions = [
-    //     {id: 1, name: "Адыгея"},
-    //     {id: 2, name: "Краснодарский край"}
-    // ]
+    constructor(private httpService: HttpService, private errorHandler: ErrorHandlerService ){}
+
     firstname: string | undefined
     lastname: string | undefined
     middlename: string | undefined
@@ -26,30 +21,48 @@ export class RegistrationComponent{
     gender: string | undefined
     login: string | undefined
     password: string | undefined
-
+ 
+    
+    errorMessage : String ="";
     regions: any;
+    genders: any;
     user: any;
     users: any;
-    REGION_URL = `http://localhost:8080/regions`;
-    USER_URL = `http://localhost:8080/user`;
-    USERS_URL = `http://localhost:8080/users`; //посик по логину, почте и телефону
+    REGION_URL = `http://localhost:8080/api/regions`;
+    GENDERS_URL = `http://localhost:8080/api/genders`;
+    USER_URL = `http://localhost:8080/api/user`; 
+    USERS_URL = `http://localhost:8080/api/users`; //посик по логину, почте и телефону
+    REGISTRATION_URL = `http://localhost:8080/api/register`;
 
     ngOnInit() {
         this.httpService
             .getData(this.REGION_URL)
-            .subscribe((regions) => (this.regions = regions));
+            .subscribe((regions) => (this.regions = regions), 
+            (error) => {
+              this.errorHandler.handleError(error);
+              this.errorMessage = this.errorHandler.errorMessage;
+            });
         this.httpService
-            .getData(this.USERS_URL)
-            .subscribe((users) => (this.users = users));
+            .getData(this.GENDERS_URL)
+            .subscribe((genders) => (this.genders = genders), 
+            (error) => {
+              this.errorHandler.handleError(error);
+              this.errorMessage = this.errorHandler.errorMessage;
+            });
+        // this.httpService
+        //     .getData(this.USERS_URL)
+        //     .subscribe((users) => (this.users = users));
     }
+   
 
     public registration(){
         try {
+            
             if(this.firstname == undefined || this.firstname == ""
             || this.lastname == undefined || this.lastname == ""
             || this.email == undefined || this.email == ""
             || this.phone == undefined || this.phone == ""
-            || this.region == undefined || this.region == ""
+             || this.region == undefined || this.region == ""
             || this.gender == undefined || this.gender == ""
             || this.login == undefined || this.login == ""
             || this.password == undefined || this.password == ""){
@@ -64,18 +77,25 @@ export class RegistrationComponent{
                 }
                 else{
                     const userBody = {
-                        firstname: this.firstname, 
-                        lastname: this.lastname,
-                        middlename: this.middlename,
+                        firstName: this.firstname, 
+                        lastName: this.lastname,
+                        middleName: this.middlename,
                         email: this.email,
-                        phone: this.phone,
-                        regionId: this.region,
+                        phoneNumber: this.phone,
                         genderId: this.gender,
+                        roleId: 1,
+                        regionId: this.region,
                         login: this.login,
-                        password: this.password
+                        password: this.password,
+                        accountTypeId: null,
+                        restrictions: []
                     };
-                    this.httpService.addData(this.USER_URL, userBody).subscribe((user) => (this.user = user));
+                    this.httpService.register(this.REGISTRATION_URL, userBody);
+                    
+
+                    
                 }
+                
             }
         } catch (error) {
             alert(error);
