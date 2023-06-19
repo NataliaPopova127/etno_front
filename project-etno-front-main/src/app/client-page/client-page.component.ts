@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-page.component.css']
 })
 export class ClientPageComponent {
-
+  firstname: string | undefined;
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 
+import { Router } from '@angular/router';
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -11,7 +13,7 @@ import { ErrorHandlerService } from '../shared/services/error-handler.service';
 export class HomeComponent {
 
 	errorMessage : String ="";
-	constructor(private httpService: HttpService, private errorHandler: ErrorHandlerService) {}
+	constructor(private httpService: HttpService, private errorHandler: ErrorHandlerService, private router: Router) {}
 	response: any;
 	ROOT_URL = '';
 
@@ -26,24 +28,27 @@ export class HomeComponent {
 	  ];
   
 	ngOnInit() {
-	  this.ROOT_URL = `http://localhost:8080/api/regions`;
-	  this.httpService
-		.getData(this.ROOT_URL)
-		.subscribe((response) => {
-			(this.response = response)
-		}, 
-		(error) => {
-		  this.errorHandler.handleError(error);
-		  this.errorMessage = this.errorHandler.errorMessage;
-		});
 
-	  if(this.response == undefined){
-      	this.response = this.emptyRegion;
-		this.length = 0;
-		console.log();
-      }
-	  else{
-		this.length = this.response.length;
-	  }
+		this.router.navigate(['/client-page', 1]);
+
+	//   this.ROOT_URL = `http://localhost:8080/api/regions`;
+	//   this.httpService
+	// 	.getData(this.ROOT_URL)
+	// 	.subscribe((response) => {
+	// 		(this.response = response)
+	// 	}, 
+	// 	(error) => {
+	// 	  this.errorHandler.handleError(error);
+	// 	  this.errorMessage = this.errorHandler.errorMessage;
+	// 	});
+
+	//   if(this.response == undefined){
+    //   	this.response = this.emptyRegion;
+	// 	this.length = 0;
+	// 	console.log();
+    //   }
+	//   else{
+	// 	this.length = this.response.length;
+	//   }
 	}
 }

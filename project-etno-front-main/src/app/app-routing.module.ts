@@ -12,6 +12,7 @@ import { PagenotfoundComponent } from  './pagenotfound/pagenotfound.component';
 import { InternalseverComponent } from './internalsever/internalsever.component'
 import { ClientPageComponent } from './client-page/client-page.component';
 import { Error403PageComponent } from './error403-page/error403-page.component';
+import { OtherErrorComponent } from './other-error/other-error.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: '404', pathMatch: 'full', component: PagenotfoundComponent},
   { path: '403', pathMatch: 'full', component: Error403PageComponent},
   { path: '500', component: InternalseverComponent },
+  { path: 'other-error', component: OtherErrorComponent },
 ];
 
 @NgModule({

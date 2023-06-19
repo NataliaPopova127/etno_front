@@ -41,7 +41,7 @@ export class ErrorHandlerService {
  
   private handleOtherError = (error: HttpErrorResponse) => {
     this.createErrorMessage(error);
-    //TODO: this will be fixed later;
+    this.router.navigate(['/other-error']);
   }
  
   private createErrorMessage = (error: HttpErrorResponse) => {
