@@ -11,6 +11,7 @@ import { AddTourByTourAdminComponent } from './add-tour-by-tour-admin/add-tour-b
 import { PagenotfoundComponent } from  './pagenotfound/pagenotfound.component';
 import { InternalseverComponent } from './internalsever/internalsever.component'
 import { ClientPageComponent } from './client-page/client-page.component';
+import { Error403PageComponent } from './error403-page/error403-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: 'client-page/:id', component: ClientPageComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '404', pathMatch: 'full', component: PagenotfoundComponent},
-  { path: '403', pathMatch: 'full', component: PagenotfoundComponent},
+  { path: '403', pathMatch: 'full', component: Error403PageComponent},
   { path: '500', component: InternalseverComponent },
 ];
 

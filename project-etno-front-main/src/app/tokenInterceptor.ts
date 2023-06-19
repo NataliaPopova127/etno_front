@@ -9,6 +9,7 @@ import { Token } from '@angular/compiler';
 export class TokenInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+      // localStorage.clear();
         const userToken = localStorage.getItem('accessToken');
         if(userToken != null){
           const modifiedReq = req.clone({ 

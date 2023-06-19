@@ -24,6 +24,7 @@ import { MaterialModule } from './material.module';
 import { ModalComponent } from './modal/modal.component';
 import { TokenInterceptor } from './tokenInterceptor';
 import { ClientPageComponent } from './client-page/client-page.component';
+import { Error403PageComponent } from './error403-page/error403-page.component';
 
 const mapConfig:  YaConfig = {
   apikey: '6db495ad-3e21-4030-a956-74245743feac',
@@ -45,6 +46,7 @@ const mapConfig:  YaConfig = {
     AddTourByTourAdminComponent,
     ModalComponent,
     ClientPageComponent,
+    Error403PageComponent,
   ],
   imports: [
     BrowserModule,
